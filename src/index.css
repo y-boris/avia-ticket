@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600&display=swap&subset=cyrillic');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font: 14px/21px 'Open Sans', Roboto, 'Helvetica Neue', -apple-system, sans-serif;
+  background-color: #E5E5E5;
+}
+
+.container_wrapper {
+  width: 750px;
+  margin: 0 auto;
+}
+
+header {
+  height: 160px;
+  padding-top: 40px;
+  text-align: center;
+}
+
+main {
+  display: flex;
+}
+
+aside {
+  width: 230px;
+  margin-right: 20px;
+}
+
+section {
+  width: 100%;
+  background-color: antiquewhite;
+}
