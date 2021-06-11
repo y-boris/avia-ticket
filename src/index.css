@@ -39,6 +39,7 @@ body {
 
 .container__main {
   width: 500px;
+  padding-bottom: 50px;
 }
 
 .filter_countTransfers {
