@@ -1,37 +1,223 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600&display=swap&subset=cyrillic');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap&subset=cyrillic');
+
+:root {
+  --font-regular: 'Open Sans', Roboto, 'Helvetica Neue', -apple-system, sans-serif;
+  --transition: .5s cubic-bezier(.33, .96, .49, 1.01);
+}
 
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
-  font: 14px/21px 'Open Sans', Roboto, 'Helvetica Neue', -apple-system, sans-serif;
-  background-color: #E5E5E5;
+  font: 14px/21px var(--font-regular);
+  background: #F3F7FA;
+  color: #4a4a4a;
 }
 
-.container_wrapper {
+.container__wrapper {
   width: 750px;
   margin: 0 auto;
 }
 
-header {
+.container__header {
   height: 160px;
   padding-top: 40px;
   text-align: center;
+  box-sizing: border-box;
 }
 
-main {
+.container {
   display: flex;
 }
 
-aside {
+.sidebar__left {
   width: 230px;
   margin-right: 20px;
 }
 
-section {
+.container__main {
+  width: 500px;
+}
+
+.filter_countTransfers {
+  background: white;
+  padding-bottom: 10px;
+}
+
+.filter_countTransfers h3 {
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 12px;
+  font-style: normal;
+  font-weight: 600;
+  padding: 20px;
+}
+
+.filter_countTransfers label {
+  padding: 10px 20px 10px 40px;
+  position: relative;
   width: 100%;
-  background-color: antiquewhite;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: var(--transition);
+  box-sizing: border-box;
+}
+
+.filter_countTransfers label:hover {
+  background: #F1FCFF;
+}
+
+.checker {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  width: 20px;
+  height: 20px;
+  background: url("./assets/bg-checker-off.svg");
+}
+
+.countTransfers_checkbox:checked + .checker {
+  background: url("./assets/bg-checker-on.svg");
+}
+
+.countTransfers_name {
+  font-size: 13px;
+  line-height: 20px;
+  padding-left: 10px;
+}
+
+.button {
+  color: #4a4a4a;
+  font: 12px/20px var(--font-regular);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.button__showmoreticket {
+  background: #2196F3;
+  width: 100%;
+  height: 50px;
+  color: white;
+}
+
+.button__showmoreticket:hover,
+.button__showmoreticket:focus {
+  background: #71bbff;
+}
+
+.button__showmoreticket:active {
+  background: #0c73fe;
+  box-shadow: inset 0 2px 0 #0656fe;
+}
+
+.switcher__route {
+  display: flex;
+  flex-grow: 1;
+  background: white;
+  border: 1px solid #DFE5EC;
+  border-radius: 5px;
+  height: 50px;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.switcher__route_item {
+  width: 100%;
+  background: transparent;
+  border: none;
+}
+
+.switcher__route_item:not(:last-child) {
+  border-right: 1px solid #DFE5EC;
+}
+
+.switcher__route_item-active,
+.switcher__route_item:hover:not(:last-child) {
+  border-color: #0c73fe !important;
+}
+
+.switcher__route_item:hover,
+.switcher__route_item-active {
+  background: #0c73fe !important;
+  color: white;
+}
+
+.ticket__item {
+  background: white;
+  margin: 20px 0;
+  padding: 20px;
+  position: relative;
+}
+
+.ticket__item_header {
+  position: relative;
+  height: 55px;
+}
+
+.ticket__item_logo {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.ticket__item_price {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 24px;
+  color: #2196F3;
+}
+
+.ticket__item_info {
+  display: flex;
+}
+
+.ticket__item_info:not(:last-child) {
+  padding-bottom: 10px;
+}
+
+.ticket__item_info-city,
+.ticket__item_info-time,
+.ticket__item_info-transfer {
+  font-size: 14px;
+  line-height: 21px;
+  width: 140px;
+}
+
+.ticket__item_info div:not(:last-child) {
+  padding-right: 20px;
+}
+
+.ticket__item_info strong {
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 18px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #A0B0B9;
+  display: block;
+}
+
+/* ######### */
+
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
+
+.block-background {
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
 }
