@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
+import SwitcherButton from "./components/SwitcherButton";
+import Ticket from "./components/Ticket";
 import numeral from "numeral";
-import moment from "moment";
 import "numeral/locales/ru";
-import "moment/locale/ru";
 
 numeral.locale("ru");
 
@@ -12,10 +12,13 @@ function App() {
   const [tickets, setTickets] = useState([]);
   const [stop, setStop] = useState(false);
   const [sortTickets, setSortTickets] = useState([]);
+  const [switcher, setSwitcher] = useState("lowprice");
+
+// !!! TODO: filter & sorting !!!
 
   useEffect(() => {
     if (stop === true) {
-      setSortTickets(tickets.slice(0,5))
+      setSortTickets(tickets.slice(0,5).sort((a, b) => a.price - b.price))
     }
   }, [tickets, stop])
 
@@ -101,47 +104,24 @@ function App() {
 
         <section className="container__main">
           <div className="switcher__route">
-            <button className="button switcher__route_item switcher__route_item-active">
-              Самый дешевый
-            </button>
-            <button className="button switcher__route_item">
-              Самый быстрый
-            </button>
-            <button className="button switcher__route_item">
-              Оптимальный
-            </button>
+            <SwitcherButton
+              active={switcher === "lowprice"}
+              onClick={(e) => setSwitcher("lowprice")}
+              title="Самый дешевый"
+            />
+            <SwitcherButton
+              active={switcher === "fastest"}
+              onClick={(e) => setSwitcher("fastest")}
+              title="Самый быстрый"
+            />
+            <SwitcherButton
+              active={switcher === "optimal"}
+              onClick={(e) => setSwitcher("optimal")}
+              title="Оптимальный"
+            />
           </div>
 
-          <section className="container__ticket">
-
-            {sortTickets.map((ticket) => (
-              <div className="ticket__item block-background" key={ticket.segments[0].date + ticket.segments[1].date}>
-                <div className="ticket__item_header">
-                  <span className="ticket__item_price">
-                    {numeral(ticket.price).format('0,0 $').replace("руб.","₽")}
-                  </span>
-                  <img src={`//pics.avs.io/99/36/${ticket.carrier}.png`} alt={ticket.carrier} className="ticket__item_logo" />
-                </div>
-                {ticket.segments.map((segment) => (
-                  <div className="ticket__item_info" key={segment.date}>
-                    <div className="ticket__item_info-city">
-                      <strong>{`${segment.origin} – ${segment.destination}`}</strong>
-                      {moment(segment.date).format("HH:mm")} – {moment(segment.date).add(segment.duration, "minutes").format("HH:mm")}
-                    </div>
-                    <div className="ticket__item_info-time">
-                      <strong>В пути</strong>
-                      {moment(segment.duration).format("HHч mmм")}
-                    </div>
-                    <div className="ticket__item_info-transfer">
-                      {segment.stops.length && segment.stops.length > 1 ? <strong>{segment.stops.length}</strong> : <strong>Без пересадок</strong>}
-                      {segment.stops.join(", ")}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ))}
-
-          </section>
+          <Ticket sortTickets={sortTickets} />
 
           <button className="button button__showmoreticket block-background">
             Показать еще 5 билетов!
