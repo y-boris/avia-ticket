@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import numeral from "numeral";
-import "numeral/locales/ru";
 import moment from "moment";
+import "numeral/locales/ru";
 import "moment/locale/ru";
 
 numeral.locale("ru");
@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {
     if (stop === true) {
-      setSortTickets(tickets.slice(0,3))
+      setSortTickets(tickets.slice(0,5))
     }
   }, [tickets, stop])
 
@@ -127,7 +127,6 @@ function App() {
                     <div className="ticket__item_info-city">
                       <strong>{`${segment.origin} – ${segment.destination}`}</strong>
                       {moment(segment.date).format("HH:mm")} – {moment(segment.date).add(segment.duration, "minutes").format("HH:mm")}
-
                     </div>
                     <div className="ticket__item_info-time">
                       <strong>В пути</strong>
