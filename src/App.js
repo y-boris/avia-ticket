@@ -8,15 +8,13 @@ import "numeral/locales/ru";
 numeral.locale("ru");
 
 function App() {
+  const [ticketsItems, setTicketsItems] = useState(5);
   const [searchId, setSearchId] = useState();
   const [tickets, setTickets] = useState([]);
   const [stop, setStop] = useState(false);
   const [sortTickets, setSortTickets] = useState([]);
   const [switcher, setSwitcher] = useState("lowprice");
   const [filter, setFilter] = useState({ transferAll: true, transferNone: true, transferOne: true, transferTwo: true, transferThree: true });
-
-  // !!! TODO
-  // !!! show more tickets
 
   const allSorter = useCallback((ticketsArray1) => {
     const newTickets = [...ticketsArray1];
@@ -52,9 +50,9 @@ function App() {
 
   useEffect(() => {
     if (stop === true) {
-      setSortTickets(allSorter(filterTickets(tickets)).slice(0,4));
+      setSortTickets(allSorter(filterTickets(tickets)).slice(0,ticketsItems));
     }
-  }, [tickets, stop, switcher, allSorter, filterTickets]);
+  }, [tickets, stop, switcher, allSorter, filterTickets, ticketsItems]);
 
   useEffect(() => {
     fetch("https://front-test.beta.aviasales.ru/search")
@@ -209,7 +207,10 @@ function App() {
 
           <Ticket sortTickets={sortTickets} />
 
-          <button className="button button__showmoreticket block-background">
+          <button
+            className="button button__showmoreticket block-background"
+            onClick={() => setTicketsItems(ticketsItems + 5)}
+          >
             Показать еще 5 билетов!
           </button>
         </section>
