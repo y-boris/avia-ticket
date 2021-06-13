@@ -1,8 +1,8 @@
 export const getNoun = (n, zero, one, two, five) => {
   n %= 100;
-  // if (n >= 5 && n <= 20) {
-  //   return five;
-  // }
+  if (n >= 5 && n <= 20) {
+    return five;
+  }
   n %= 10;
   if (n === 1) {
     return one;
