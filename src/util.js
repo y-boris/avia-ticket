@@ -1,17 +1,17 @@
-export const getNoun = (n) => {
+export const getNoun = (n, zero, one, two, five) => {
   n %= 100;
-  if (n >= 5 && n <= 20) {
-    return "пересадок";
-  }
+  // if (n >= 5 && n <= 20) {
+  //   return five;
+  // }
   n %= 10;
   if (n === 1) {
-    return "пересадка";
+    return one;
   }
   if (n >= 2 && n <= 4) {
-    return "пересадки";
+    return two;
   }
   if (n === 0) {
-    return "без пересадок";
+    return zero;
   }
-  return "пересадок";
+  return five;
 };

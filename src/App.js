@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Header from "./components/Header";
 import SwitcherButton from "./components/SwitcherButton";
 import Ticket from "./components/Ticket";
@@ -14,13 +14,25 @@ function App() {
   const [sortTickets, setSortTickets] = useState([]);
   const [switcher, setSwitcher] = useState("lowprice");
 
-// !!! TODO: filter & sorting !!!
+// !!! TODO: filter & show more tickets !!!
+
+  const allSorter = useCallback((tickets1) => {
+    const newTickets = [...tickets1];
+
+    if (switcher === "lowprice") {
+      return newTickets.sort((a, b) => a.price - b.price);
+    } else if (switcher === "fastest") {
+      return newTickets.sort((a, b) => (b.segments[0].duration + b.segments[1].duration) - (a.segments[0].duration + a.segments[1].duration));
+    } else {
+      return newTickets.sort((a, b) => (a.segments[0].stops.length + a.segments[1].stops.length) - (b.segments[0].stops.length + b.segments[1].stops.length));
+    };
+  }, [switcher]);
 
   useEffect(() => {
     if (stop === true) {
-      setSortTickets(tickets.slice(0,5).sort((a, b) => a.price - b.price))
+      setSortTickets(allSorter(tickets).slice(0,4));
     }
-  }, [tickets, stop])
+  }, [tickets, stop, switcher, allSorter]);
 
   useEffect(() => {
     fetch("https://front-test.beta.aviasales.ru/search")
@@ -106,17 +118,17 @@ function App() {
           <div className="switcher__route">
             <SwitcherButton
               active={switcher === "lowprice"}
-              onClick={(e) => setSwitcher("lowprice")}
+              onClick={() => setSwitcher("lowprice")}
               title="Самый дешевый"
             />
             <SwitcherButton
               active={switcher === "fastest"}
-              onClick={(e) => setSwitcher("fastest")}
+              onClick={() => setSwitcher("fastest")}
               title="Самый быстрый"
             />
             <SwitcherButton
               active={switcher === "optimal"}
-              onClick={(e) => setSwitcher("optimal")}
+              onClick={() => setSwitcher("optimal")}
               title="Оптимальный"
             />
           </div>
