@@ -4,6 +4,7 @@ import SwitcherButton from "./components/SwitcherButton";
 import Ticket from "./components/Ticket";
 import numeral from "numeral";
 import "numeral/locales/ru";
+import './index.css';
 
 numeral.locale("ru");
 
@@ -205,7 +206,7 @@ function App() {
             />
           </div>
 
-          <Ticket sortTickets={sortTickets} />
+            <Ticket sortTickets={sortTickets} />
 
           <button
             className="button button__showmoreticket block-background"
