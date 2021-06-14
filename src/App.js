@@ -16,6 +16,7 @@ function App() {
   const [sortTickets, setSortTickets] = useState([]);
   const [switcher, setSwitcher] = useState("lowprice");
   const [filter, setFilter] = useState({ transferAll: true, transferNone: true, transferOne: true, transferTwo: true, transferThree: true });
+  const [isLoading, setLoading] = useState(true);
 
   const allSorter = useCallback((ticketsArray1) => {
     const newTickets = [...ticketsArray1];
@@ -53,6 +54,8 @@ function App() {
     if (stop === true) {
       setSortTickets(allSorter(filterTickets(tickets)).slice(0,ticketsItems));
     }
+
+    setLoading(false);
   }, [tickets, stop, switcher, allSorter, filterTickets, ticketsItems]);
 
   useEffect(() => {
@@ -65,6 +68,7 @@ function App() {
   useEffect(() => {
     if (searchId && stop === false) {
       function ticketsArray() {
+        setLoading(true);
         fetch(`https://front-test.beta.aviasales.ru/tickets?searchId=${searchId}`)
         .then((data) => {
           if (data.status === 500) {
@@ -206,7 +210,7 @@ function App() {
             />
           </div>
 
-            <Ticket sortTickets={sortTickets} />
+          <Ticket sortTickets={sortTickets} isloading={isLoading} />
 
           <button
             className="button button__showmoreticket block-background"

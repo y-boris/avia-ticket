@@ -3,12 +3,12 @@ import moment from "moment";
 import "numeral/locales/ru";
 import "moment/locale/ru";
 import { getNoun } from "../../util";
+import MyLoader from "../MyLoader";
 
-function Ticket({ sortTickets }) {
+function Ticket({ sortTickets, ...props }) {
   return (
     <section className="container__ticket">
-
-      {sortTickets.map((ticket) => (
+      {props.isloading ? <MyLoader /> : sortTickets.map((ticket) => (
         <div className="ticket__item block-background" key={ticket.segments[0].date + ticket.segments[1].date}>
           <div className="ticket__item_header">
             <span className="ticket__item_price">
