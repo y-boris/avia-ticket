@@ -27,7 +27,7 @@ function Ticket({ sortTickets, ...props }) {
                 {moment(segment.duration).format("HHч mmм")}
               </div>
               <div className="ticket__item_info-transfer">
-                <strong>{segment.stops.length > 0 && segment.stops.length} {getNoun(segment.stops.length, "Без пересадок", "пересадка", "пересадки")}</strong>
+                <strong>{segment.stops.length > 0 && segment.stops.length} {getNoun(segment.stops.length, ["пересадка", "пересадки", "Без пересадок"])}</strong>
                 {segment.stops.join(", ")}
               </div>
             </div>
