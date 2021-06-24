@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import Header from "./components/Header";
 import SwitcherButton from "./components/SwitcherButton";
+import FilterCheckbox from "./components/FilterCheckbox"
 import Ticket from "./components/Ticket";
 import numeral from "numeral";
 import "numeral/locales/ru";
@@ -127,66 +128,31 @@ function App() {
           <div className="filter_countTransfers block-background">
             <h3>Количество пересадок</h3>
             <form>
-              <label>
-                <input
-                  type="checkbox"
-                  className="countTransfers_checkbox visually-hidden"
-                  onChange={() => filterHandler("transferAll")}
-                  checked={filter.transferAll}
-                />
-                <span className="checker" />
-                <span className="countTransfers_name">
-                  Все
-                </span>
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  className="countTransfers_checkbox visually-hidden"
-                  onChange={() => filterHandler("transferNone")}
-                  checked={filter.transferNone}
-                />
-                <span className="checker" />
-                <span className="countTransfers_name">
-                  Без пересадок
-                </span>
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  className="countTransfers_checkbox visually-hidden"
-                  onChange={() => filterHandler("transferOne")}
-                  checked={filter.transferOne}
-                />
-                <span className="checker" />
-                <span className="countTransfers_name">
-                  1 пересадка
-                </span>
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  className="countTransfers_checkbox visually-hidden"
-                  onChange={() => filterHandler("transferTwo")}
-                  checked={filter.transferTwo}
-                />
-                <span className="checker" />
-                <span className="countTransfers_name">
-                  2 пересадки
-                </span>
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  className="countTransfers_checkbox visually-hidden"
-                  onChange={() => filterHandler("transferThree")}
-                  checked={filter.transferThree}
-                />
-                <span className="checker" />
-                <span className="countTransfers_name">
-                  3 пересадки
-                </span>
-              </label>
+              <FilterCheckbox
+                onChange={() => filterHandler("transferAll")}
+                checked={filter.transferAll}
+                name="Все"
+              />
+              <FilterCheckbox
+                onChange={() => filterHandler("transferNone")}
+                checked={filter.transferNone}
+                name="Без пересадок"
+              />
+              <FilterCheckbox
+                onChange={() => filterHandler("transferOne")}
+                checked={filter.transferOne}
+                name="1 пересадки"
+              />
+              <FilterCheckbox
+                onChange={() => filterHandler("transferTwo")}
+                checked={filter.transferTwo}
+                name="2 пересадки"
+              />
+              <FilterCheckbox
+                onChange={() => filterHandler("transferThree")}
+                checked={filter.transferThree}
+                name="3 пересадки"
+              />
             </form>
           </div>
         </aside>
