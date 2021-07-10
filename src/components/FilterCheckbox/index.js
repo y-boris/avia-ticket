@@ -1,9 +1,9 @@
 function FilterCheckbox({ name, checked, ...props }) {
   return (
-    <label>
+    <label className="countTransfers_label">
       <input
-        type="checkbox"
         className="countTransfers_checkbox visually-hidden"
+        type="checkbox"
         onChange={props.onChange}
         checked={checked}
       />

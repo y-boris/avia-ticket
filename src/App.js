@@ -125,8 +125,8 @@ function App() {
 
       <main className="container">
         <aside className="sidebar__left">
-          <div className="filter_countTransfers block-background">
-            <h3>Количество пересадок</h3>
+          <div className="filter__countTransfers block-background">
+            <h3 className="filter__countTransfers-title">Количество пересадок</h3>
             <form>
               <FilterCheckbox
                 onChange={() => filterHandler("transferAll")}

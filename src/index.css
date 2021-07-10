@@ -1,24 +1,25 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap&subset=cyrillic');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
 
 :root {
-  --font-regular: 'Open Sans', Roboto, 'Helvetica Neue', -apple-system, sans-serif;
   --transition: .5s cubic-bezier(.33, .96, .49, 1.01);
 }
 
 * {
   margin: 0;
   padding: 0;
+  font: 14px/21px 'Open Sans', Roboto, 'Helvetica Neue', -apple-system, sans-serif;
 }
 
 body {
-  font: 14px/21px var(--font-regular);
   background: #F3F7FA;
   color: #4a4a4a;
 }
 
 .container__wrapper {
-  width: 750px;
+  max-width: 750px;
+  min-width: 460px;
   margin: 0 auto;
+  padding: 0 20px;
 }
 
 .container__header {
@@ -33,21 +34,21 @@ body {
 }
 
 .sidebar__left {
-  width: 230px;
-  margin-right: 20px;
+  flex-basis: 230px;
+  margin: 0 20px 20px 0;
 }
 
 .container__main {
-  width: 500px;
+  flex-basis: 500px;
   padding-bottom: 50px;
 }
 
-.filter_countTransfers {
+.filter__countTransfers {
   background: white;
   padding-bottom: 10px;
 }
 
-.filter_countTransfers h3 {
+.filter__countTransfers-title {
   text-transform: uppercase;
   font-size: 12px;
   line-height: 12px;
@@ -56,7 +57,7 @@ body {
   padding: 20px;
 }
 
-.filter_countTransfers label {
+.countTransfers_label {
   padding: 10px 20px 10px 40px;
   position: relative;
   width: 100%;
@@ -65,9 +66,10 @@ body {
   cursor: pointer;
   transition: var(--transition);
   box-sizing: border-box;
+  white-space: nowrap;
 }
 
-.filter_countTransfers label:hover {
+.countTransfers_label:hover {
   background: #F1FCFF;
 }
 
@@ -92,8 +94,9 @@ body {
 
 .button {
   color: #4a4a4a;
-  font: 12px/20px var(--font-regular);
   font-weight: 600;
+  font-size: 12px;
+  line-height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -130,6 +133,7 @@ body {
   height: 50px;
   justify-content: space-between;
   overflow: hidden;
+  margin-bottom: 20px;
 }
 
 .switcher__route_item {
@@ -155,7 +159,7 @@ body {
 
 .ticket__item {
   background: white;
-  margin: 20px 0;
+  margin-bottom: 20px;
   padding: 20px;
   position: relative;
   transition: all var(--transition);
@@ -192,15 +196,16 @@ body {
 .ticket__item_info-transfer {
   font-size: 14px;
   line-height: 21px;
-  width: 140px;
+  font-weight: 600;
+  flex-basis: 140px;
 }
 
 .ticket__item_info div:not(:last-child) {
   padding-right: 20px;
 }
 
-.ticket__item_info strong {
-  font-weight: normal;
+.ticket__item_info-title {
+  font-weight: 600;
   font-size: 12px;
   line-height: 18px;
   letter-spacing: 0.5px;
@@ -222,4 +227,21 @@ body {
 .block-background {
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
+}
+
+@media (max-width: 650px) {
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+  }
+
+  .sidebar__left {
+    flex-basis: 100%;
+    margin-right: 0;
+  }
+
+  .container__main {
+    flex-basis: 100%;
+  }
 }
