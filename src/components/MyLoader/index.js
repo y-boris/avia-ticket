@@ -8,10 +8,6 @@ const MyLoader = (props) => (
   >
 
     <rect x="0" y="0" rx="5" ry="5" width="500" height="185" />
-
-
-
-
   </ContentLoader>
 )
 
