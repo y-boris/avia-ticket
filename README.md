@@ -12,8 +12,7 @@ Deployed live on https://avia-sales-9ce972.netlify.app. Check out!
 
 Yooooo! 🚀
 
-![Screenshot 2021-06-13 at 23 14 25](https://user-images.githubusercontent.com/68222437/121820828-76344180-cc9d-11eb-8ced-b8fd303fb8f5.png)
-
+![Screenshot 2021-07-14 at 20 08 16](https://user-images.githubusercontent.com/68222437/125663850-bdce76b3-74c7-460e-bfcb-8edd00513af2.png)
 
 # Getting Started with Create React App
 
