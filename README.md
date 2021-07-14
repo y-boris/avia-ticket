@@ -1,8 +1,10 @@
 # Aviasales test page
 
-This is a veeery simple project I built using React with styled components.
+This project is made for fun I build using React (not for an interview :-).
 
-Deployed live on https://react-calc-7725be.netlify.app. Check out!
+Project page: https://github.com/KosyanMedia/test-tasks/tree/master/aviasales_frontend
+
+Deployed live on https://avia-sales-9ce972.netlify.app. Check out!
 
 Yooooo! 🚀
 
