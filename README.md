@@ -1,6 +1,10 @@
 # Aviasales test page
 
-This project is made for fun I build using React (not for an interview :-).
+This project is made for fun I build using React (not for an interview :-). Some key Aspects:
+
+- Numeral;
+- Moment;
+- ContentLoader.
 
 Project page: https://github.com/KosyanMedia/test-tasks/tree/master/aviasales_frontend
 
